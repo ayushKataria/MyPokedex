@@ -10,16 +10,16 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.models.PokemonListItemModel
-import com.example.akat2.mypokedex.utils.URL_POKEMON_IMAGE
+import com.example.akat2.mypokedex.utils.Utils
 
 /**
  * Created by Ayush Kataria on 21-06-2018.
  */
-class PokemonListAdapter(val context: Context, val pokemonList: ArrayList<PokemonListItemModel>): RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
+class PokemonListAdapter(val context: Context, val pokemonList: ArrayList<PokemonListItemModel>, val itemClick: (PokemonListItemModel, ImageView) -> Unit): RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_list_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -30,7 +30,7 @@ class PokemonListAdapter(val context: Context, val pokemonList: ArrayList<Pokemo
         holder.bindPokemon(pokemonList[position])
     }
 
-    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View?, val itemClick: (PokemonListItemModel, ImageView) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
         val pokemonListImage = itemView?.findViewById<ImageView>(R.id.pokemonListImageView)
         val pokemonListNameTxt = itemView?.findViewById<TextView>(R.id.pokemonListNameTxt)
@@ -39,14 +39,18 @@ class PokemonListAdapter(val context: Context, val pokemonList: ArrayList<Pokemo
 
             pokemonListNameTxt?.text = pokemon.name
 
-            val pokemonUrl = pokemon.url
-            val pokemonId = pokemonUrl.replaceFirst("https://pokeapi.co/api/v2/pokemon/", "").replaceFirst("/", "")
-            val imageUrl = "$URL_POKEMON_IMAGE$pokemonId.png"
+            val imageUrl = Utils.getImageUrl(pokemon.url)
 
             if (pokemonListImage != null) {
                 Glide.with(context)
                         .load(imageUrl)
                         .into(pokemonListImage)
+            }
+
+            itemView?.setOnClickListener {
+                if (pokemonListImage != null) {
+                    itemClick(pokemon, pokemonListImage)
+                }
             }
         }
     }

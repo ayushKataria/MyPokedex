@@ -16,7 +16,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_bright" />
+        app:srcCompat="@android:color/holo_blue_bright"
+        android:transitionName="pokemonImage"/>
 
     <TextView
         android:id="@+id/pokemonListNameTxt"
