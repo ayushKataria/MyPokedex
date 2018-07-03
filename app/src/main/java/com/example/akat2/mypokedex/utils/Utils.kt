@@ -1,5 +1,9 @@
 package com.example.akat2.mypokedex.utils
 
+import android.content.Context
+import android.graphics.BitmapFactory
+import com.example.akat2.mypokedex.R
+
 /**
  * Created by Ayush Kataria on 27-06-2018.
  */
@@ -13,4 +17,9 @@ object Utils {
         return imageUrl
     }
 
+
+    fun getTypeImageResourceId(context: Context?, pokemonType: String):Int? {
+        val resourceId = context?.resources?.getIdentifier(pokemonType, "mipmap", context?.packageName)
+        return resourceId
+    }
 }

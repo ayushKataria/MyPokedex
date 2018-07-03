@@ -1,8 +1,8 @@
 package com.example.akat2.mypokedex.activities
 
 import android.graphics.drawable.Drawable
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.android.volley.Response
@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.example.akat2.mypokedex.App
 import com.example.akat2.mypokedex.R
+import com.example.akat2.mypokedex.adapters.PokemonDetailViewPagerAdapter
 import com.example.akat2.mypokedex.models.Ability
 import com.example.akat2.mypokedex.models.Pokemon
 import com.example.akat2.mypokedex.models.PokemonStat
@@ -22,15 +22,13 @@ import com.example.akat2.mypokedex.utils.*
 import kotlinx.android.synthetic.main.activity_pokemon_detail.*
 import org.json.JSONException
 
-class PokemonDetailActivity : AppCompatActivity() {
+class PokemonDetailActivity() : AppCompatActivity() {
 
     lateinit var pokemonUrl: String
 
-    companion object {
-        var pokemonDetail = Pokemon(0, "", 0, 0, 0, ArrayList(), ArrayList(), HashMap(),
-                ArrayList(), HashMap(), ArrayList(), HashMap(), ArrayList(),
-                HashMap())
-    }
+    var pokemonDetail = Pokemon(0, "", 0, 0, 0, ArrayList(), ArrayList(), HashMap(),
+            ArrayList(), HashMap(), ArrayList(), HashMap(), ArrayList(),
+            HashMap())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +59,10 @@ class PokemonDetailActivity : AppCompatActivity() {
         pokemonDetailNameTxt.text = pokemonDetail.name
         pokemonDetailHeightTxt.text = "${((pokemonDetail.height.toDouble())/10).toString()}m"
         pokemonDetailWeightTxt.text = "${((pokemonDetail.weight.toDouble())/10).toString()}kg"
+
+        pokemonDetailViewPager.adapter = PokemonDetailViewPagerAdapter(supportFragmentManager)
+
+        pokemonDetailTabs.setupWithViewPager(pokemonDetailViewPager)
 
     }
 
