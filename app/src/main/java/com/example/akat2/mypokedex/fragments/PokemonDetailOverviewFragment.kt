@@ -2,7 +2,6 @@ package com.example.akat2.mypokedex.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import android.view.ViewGroup
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.activities.PokemonDetailActivity
 import com.example.akat2.mypokedex.adapters.PokemonTypeListAdapter
-import kotlinx.android.synthetic.main.pokemon_detail_overview_fragment.*
+import kotlinx.android.synthetic.main.fragment_pokemon_detail_overview.*
 
 /**
  * Created by Ayush Kataria on 01-07-2018.
@@ -18,7 +17,7 @@ import kotlinx.android.synthetic.main.pokemon_detail_overview_fragment.*
 class PokemonDetailOverviewFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = LayoutInflater.from(context).inflate(R.layout.pokemon_detail_overview_fragment, container, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.fragment_pokemon_detail_overview, container, false)
         return view
     }
 

@@ -3,6 +3,7 @@ package com.example.akat2.mypokedex.adapters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.example.akat2.mypokedex.fragments.PokemonDetailAbilitiesFragment
 import com.example.akat2.mypokedex.fragments.PokemonDetailOverviewFragment
 
 /**
@@ -15,6 +16,7 @@ class PokemonDetailViewPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter
     override fun getItem(position: Int): Fragment {
         return when(position) {
             0 -> PokemonDetailOverviewFragment()
+            1 -> PokemonDetailAbilitiesFragment()
             else -> Fragment()
         }
     }
