@@ -15,9 +15,7 @@ import com.bumptech.glide.request.target.Target
 import com.example.akat2.mypokedex.App
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.adapters.PokemonDetailViewPagerAdapter
-import com.example.akat2.mypokedex.models.Ability
-import com.example.akat2.mypokedex.models.Pokemon
-import com.example.akat2.mypokedex.models.PokemonStat
+import com.example.akat2.mypokedex.models.*
 import com.example.akat2.mypokedex.utils.*
 import kotlinx.android.synthetic.main.activity_pokemon_detail.*
 import org.json.JSONException
@@ -27,8 +25,7 @@ class PokemonDetailActivity() : AppCompatActivity() {
     lateinit var pokemonUrl: String
 
     var pokemonDetail = Pokemon(0, "", 0, 0, 0, ArrayList(), ArrayList(), HashMap(),
-            ArrayList(), HashMap(), ArrayList(), HashMap(), ArrayList(),
-            HashMap())
+            ArrayList(), HashMap(), ArrayList(), HashMap(), ArrayList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,9 +130,23 @@ class PokemonDetailActivity() : AppCompatActivity() {
                 val movesJsonArray = response.getJSONArray("moves")
 
                 for (i in 0 until movesJsonArray.length()) {
-                    val moveJsonObject = movesJsonArray.getJSONObject(i).getJSONObject("move")
-                    pokemonDetail.moves.add(moveJsonObject.getString("name"))
-                    pokemonDetail.moveUrls.put(moveJsonObject.getString("name"), moveJsonObject.getString("url"))
+                    val moveJsonObject = movesJsonArray.getJSONObject(i)
+                    val name = moveJsonObject.getJSONObject("move").getString("name")
+                    val url = moveJsonObject.getJSONObject("move").getString("url")
+
+                    val versionGroupJsonArray = moveJsonObject.getJSONArray("version_group_details")
+
+                    val versionGroupDetailsList = ArrayList<MoveVersionGroupDetails>()
+
+                    for (i in 0 until versionGroupJsonArray.length()){
+                        val versionGroupJsonObject = versionGroupJsonArray.getJSONObject(i)
+                        val versionGroup = versionGroupJsonObject.getJSONObject("version_group").getString("name")
+                        val levelLearnedAt = versionGroupJsonObject.getInt("level_learned_at")
+                        val learnMethod = versionGroupJsonObject.getJSONObject("move_learn_method").getString("name")
+                       versionGroupDetailsList.add(MoveVersionGroupDetails(versionGroup, levelLearnedAt, learnMethod))
+                    }
+
+                    pokemonDetail.moves.add(Move(name, versionGroupDetailsList, url))
                 }
                 updateUi()
 

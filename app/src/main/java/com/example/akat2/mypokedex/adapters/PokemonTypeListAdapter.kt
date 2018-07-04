@@ -13,8 +13,8 @@ import com.example.akat2.mypokedex.utils.Utils
 /**
  * Created by Ayush Kataria on 02-07-2018.
  */
-class PokemonTypeListAdapter(val context: Context?, val types: ArrayList<String>, val typeUrl: HashMap<String, String>
-                             ,val itemClick: (String) -> Unit): RecyclerView.Adapter<PokemonTypeListAdapter.ViewHolder>() {
+class PokemonTypeListAdapter(val context: Context?, private val types: ArrayList<String>, val typeUrl: HashMap<String, String>
+                             , val itemClick: (String) -> Unit): RecyclerView.Adapter<PokemonTypeListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_type_list_item, parent, false)

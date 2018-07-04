@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.example.akat2.mypokedex.fragments.PokemonDetailAbilitiesFragment
+import com.example.akat2.mypokedex.fragments.PokemonDetailMovesFragment
 import com.example.akat2.mypokedex.fragments.PokemonDetailOverviewFragment
 
 /**
@@ -17,6 +18,7 @@ class PokemonDetailViewPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter
         return when(position) {
             0 -> PokemonDetailOverviewFragment()
             1 -> PokemonDetailAbilitiesFragment()
+            4 -> PokemonDetailMovesFragment()
             else -> Fragment()
         }
     }

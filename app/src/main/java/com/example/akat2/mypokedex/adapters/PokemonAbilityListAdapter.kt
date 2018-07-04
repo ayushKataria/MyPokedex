@@ -12,7 +12,7 @@ import com.example.akat2.mypokedex.models.Ability
 /**
  * Created by Ayush Kataria on 03-07-2018.
  */
-class PokemonAbilityListAdapter(val context: Context?, val abilityList: ArrayList<Ability>,
+class PokemonAbilityListAdapter(val context: Context?, private val abilityList: ArrayList<Ability>,
                                 val itemClick: (Ability) -> Unit): RecyclerView.Adapter<PokemonAbilityListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_ability_list_item, parent, false)
