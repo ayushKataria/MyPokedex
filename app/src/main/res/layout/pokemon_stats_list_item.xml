@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="36dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/pokemonDetailStatNameTxt"
@@ -16,19 +15,19 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="x-y" />
+        tools:text="Health" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Learned At Level: "
+        android:text="Base Stat: "
         app:layout_constraintStart_toStartOf="@+id/pokemonDetailStatNameTxt"
         app:layout_constraintTop_toBottomOf="@+id/pokemonDetailStatNameTxt" />
 
     <TextView
-        android:id="@+id/pokemonDetailMoveVersionLevelLearnedAtTxt"
+        android:id="@+id/pokemonDetailStatBaseStatTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -40,15 +39,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Learn Method: "
+        android:text="Effort: "
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/pokemonDetailMoveVersionLearnMethodTxt"
+        android:id="@+id/pokemonDetailStatEffortTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13"
-        tools:text="machine" />
+        tools:text="0" />
+
 </android.support.constraint.ConstraintLayout>

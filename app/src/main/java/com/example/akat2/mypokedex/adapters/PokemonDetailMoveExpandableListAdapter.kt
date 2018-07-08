@@ -53,7 +53,7 @@ class PokemonDetailMoveExpandableListAdapter(val context: Context?, private val 
         val versionGroupDetails = getChild(groupPosition, childPosition) as MoveVersionGroupDetails
         val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.pokemon_move_list_item, parent, false)
 
-        val pokemonDetailMoveVersionNameTxt = view.findViewById<TextView>(R.id.pokemonDetailMoveVersionNameTxt)
+        val pokemonDetailMoveVersionNameTxt = view.findViewById<TextView>(R.id.pokemonDetailStatNameTxt)
         val pokemonDetailMoveVersionLevelLearnedAtTxt = view.findViewById<TextView>(R.id.pokemonDetailMoveVersionLevelLearnedAtTxt)
         val pokemonDetailMoveVersionLearnMethodTxt = view.findViewById<TextView>(R.id.pokemonDetailMoveVersionLearnMethodTxt)
 

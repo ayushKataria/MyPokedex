@@ -16,7 +16,7 @@ class PokemonAbilityListAdapter(val context: Context?, private val abilityList: 
                                 val itemClick: (Ability) -> Unit): RecyclerView.Adapter<PokemonAbilityListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_ability_list_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +28,7 @@ class PokemonAbilityListAdapter(val context: Context?, private val abilityList: 
     }
 
 
-    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View?, val itemClick: (Ability) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
         val abilityNameTxt = itemView?.findViewById<TextView>(R.id.pokemonAbilityNameTxt)
         val abilitySlotTxt = itemView?.findViewById<TextView>(R.id.pokemonAbilitySlotTxt)

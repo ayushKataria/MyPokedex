@@ -18,7 +18,7 @@ class PokemonTypeListAdapter(val context: Context?, private val types: ArrayList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_type_list_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +29,7 @@ class PokemonTypeListAdapter(val context: Context?, private val types: ArrayList
         holder.bindType(types[position])
     }
 
-    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View?, val itemClick: (String) -> Unit) : RecyclerView.ViewHolder(itemView){
 
         val typeNameTextView = itemView?.findViewById<TextView>(R.id.pokemonListTypeTxt)
         val typeImageView = itemView?.findViewById<ImageView>(R.id.pokemonTypeImageView)
