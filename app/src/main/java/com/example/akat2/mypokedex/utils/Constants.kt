@@ -6,6 +6,7 @@ package com.example.akat2.mypokedex.utils
 
 const val BASE_URL = "https://pokeapi.co/api/v2/"
 const val URL_POKEMON = "pokemon/"
+const val URL_GENERATION = "generation/"
 
 //Image URLS
 const val URL_POKEMON_IMAGE = "https://pokeapi.co/media/sprites/pokemon/"

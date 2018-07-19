@@ -45,6 +45,16 @@ class PokemonListActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener { item: MenuItem ->
             //handle menu item clicks
+            val id = item.itemId
+            when(id){
+                R.id.navViewPokemon -> {
+                    //Already here
+                }
+                R.id.navViewGeneration -> {
+                    val genIntent = Intent(this, PokemonGenerationsActivity::class.java)
+                    startActivity(genIntent)
+                }
+            }
             true
         }
 

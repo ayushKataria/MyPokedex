@@ -5,4 +5,8 @@
         android:id="@+id/navViewPokemon"
         android:title="Pokemon"/>
 
+    <item
+        android:id="@+id/navViewGeneration"
+        android:title="Generations"/>
+
 </menu>

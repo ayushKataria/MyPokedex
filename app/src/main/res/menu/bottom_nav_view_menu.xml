@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomNavPokemon"
+        android:title="Pokemon"
+        android:icon="@drawable/ic_pikachu"/>
+
+    <item
+        android:id="@+id/bottomNavTypes"
+        android:title="Types"
+        android:icon="@mipmap/normal"/>
+
+    <item
+        android:id="@+id/bottomNavMoves"
+        android:icon="@drawable/ic_quick_slash"
+        android:title="Moves"/>
+
+</menu>
