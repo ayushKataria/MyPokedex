@@ -17,7 +17,9 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.akat2.mypokedex.App
 import com.example.akat2.mypokedex.R
-import com.example.akat2.mypokedex.fragments.PokemonGenerationPokeListFragment
+import com.example.akat2.mypokedex.fragments.PokemonGenerationMovesFragment
+import com.example.akat2.mypokedex.fragments.PokemonGenerationPokemonsFragment
+import com.example.akat2.mypokedex.fragments.PokemonGenerationTypesFragment
 import com.example.akat2.mypokedex.models.Generation
 import com.example.akat2.mypokedex.models.PokemonListItemModel
 import com.example.akat2.mypokedex.utils.BASE_URL
@@ -91,7 +93,6 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
             //Request Success
             generationNames.clear()
             generationUrls.clear()
-            progressBar.visibility = View.GONE
             try {
                 val resultJsonArray = response.getJSONArray("results")
                 for (i in 0 until resultJsonArray.length()){
@@ -105,6 +106,7 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
                 }
                 generationListReceived()
             }catch (e: JSONException){
+                progressBar.visibility = View.GONE
                 Toast.makeText(this, e.localizedMessage, Toast.LENGTH_LONG).show()
                 Log.d("EXC", e.localizedMessage)
             }
@@ -120,7 +122,7 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
 
     fun generationDataLoaded() {
 
-        loadFragment(PokemonGenerationPokeListFragment())
+        loadFragment(PokemonGenerationPokemonsFragment())
 
         generationBottomNavigationView.setOnNavigationItemSelectedListener { item: MenuItem ->
 
@@ -128,11 +130,13 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
 
             when(item.itemId){
                 R.id.bottomNavPokemon -> {
-                    fragment = PokemonGenerationPokeListFragment()
+                    fragment = PokemonGenerationPokemonsFragment()
                 }
                 R.id.bottomNavMoves -> {
+                    fragment = PokemonGenerationMovesFragment()
                 }
                 R.id.bottomNavTypes -> {
+                    fragment = PokemonGenerationTypesFragment()
                 }
             }
             return@setOnNavigationItemSelectedListener loadFragment(fragment)

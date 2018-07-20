@@ -13,16 +13,16 @@ import com.example.akat2.mypokedex.activities.PokemonDetailActivity
 import com.example.akat2.mypokedex.activities.PokemonGenerationsActivity
 import com.example.akat2.mypokedex.adapters.PokemonListAdapter
 import com.example.akat2.mypokedex.utils.POKEMON_URL_TAG
-import kotlinx.android.synthetic.main.fragment_pokemon_generation_poke_list.*
+import kotlinx.android.synthetic.main.fragment_pokemon_generation_pokemons.*
 
 /**
  * Created by Ayush Kataria on 19-07-2018.
  */
-class PokemonGenerationPokeListFragment: Fragment() {
+class PokemonGenerationPokemonsFragment: Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return LayoutInflater.from(context).inflate(R.layout.fragment_pokemon_generation_poke_list, container, false)
+        return LayoutInflater.from(context).inflate(R.layout.fragment_pokemon_generation_pokemons, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
