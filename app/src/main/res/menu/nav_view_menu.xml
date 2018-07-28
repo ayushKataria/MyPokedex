@@ -3,10 +3,22 @@
 
     <item
         android:id="@+id/navViewPokemon"
-        android:title="Pokemon"/>
+        android:title="Pokemon"
+        android:icon="@mipmap/ic_pikachu"/>
 
     <item
         android:id="@+id/navViewGeneration"
-        android:title="Generations"/>
+        android:title="Generations"
+        android:icon="@drawable/ic_gen"/>
+
+    <item
+        android:id="@+id/navViewType"
+        android:title="Type"
+        android:icon="@mipmap/ic_type"/>
+
+    <item
+        android:id="@+id/navViewBerry"
+        android:title="Berry"
+        android:icon="@mipmap/ic_berry"/>
 
 </menu>

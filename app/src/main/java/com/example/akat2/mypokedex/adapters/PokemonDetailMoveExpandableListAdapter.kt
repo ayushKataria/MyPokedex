@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.models.Move
 import com.example.akat2.mypokedex.models.MoveVersionGroupDetails
+import com.example.akat2.mypokedex.utils.Utils
 
 /**
  * Created by Ayush Kataria on 04-07-2018.
@@ -32,7 +33,7 @@ class PokemonDetailMoveExpandableListAdapter(val context: Context?, private val 
         val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.pokemon_move_list_group, parent, false)
 
         val pokemonDetailGameTextView = view.findViewById<TextView>(R.id.pokemonDetailGameTxt)
-        pokemonDetailGameTextView.text = headerTitle
+        pokemonDetailGameTextView.text = Utils.formatString(headerTitle)
 
         return view
     }
@@ -57,9 +58,9 @@ class PokemonDetailMoveExpandableListAdapter(val context: Context?, private val 
         val pokemonDetailMoveVersionLevelLearnedAtTxt = view.findViewById<TextView>(R.id.pokemonDetailMoveVersionLevelLearnedAtTxt)
         val pokemonDetailMoveVersionLearnMethodTxt = view.findViewById<TextView>(R.id.pokemonDetailMoveVersionLearnMethodTxt)
 
-        pokemonDetailMoveVersionNameTxt.text = versionGroupDetails.versionGroup
+        pokemonDetailMoveVersionNameTxt.text = Utils.formatString(versionGroupDetails.versionGroup)
         pokemonDetailMoveVersionLevelLearnedAtTxt.text = versionGroupDetails.levelLearnedAt.toString()
-        pokemonDetailMoveVersionLearnMethodTxt.text = versionGroupDetails.learnMethod
+        pokemonDetailMoveVersionLearnMethodTxt.text = Utils.formatString(versionGroupDetails.learnMethod)
 
         return view
     }

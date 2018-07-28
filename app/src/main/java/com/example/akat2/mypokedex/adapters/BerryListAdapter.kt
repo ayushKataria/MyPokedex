@@ -13,9 +13,9 @@ import com.example.akat2.mypokedex.models.PokemonListItemModel
 import com.example.akat2.mypokedex.utils.Utils
 
 /**
- * Created by Ayush Kataria on 21-06-2018.
+ * Created by Ayush Kataria on 23-07-2018.
  */
-class PokemonListAdapter(val context: Context?, private val pokemonList: ArrayList<PokemonListItemModel>, private val itemClick: (PokemonListItemModel, ImageView) -> Unit): RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
+class BerryListAdapter(val context: Context?, private val pokemonList: ArrayList<PokemonListItemModel>, private val itemClick: (PokemonListItemModel, ImageView) -> Unit): RecyclerView.Adapter<BerryListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_list_item, parent, false)
@@ -32,14 +32,14 @@ class PokemonListAdapter(val context: Context?, private val pokemonList: ArrayLi
 
     inner class ViewHolder(itemView: View?, private val itemClick: (PokemonListItemModel, ImageView) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
-        val pokemonListImage = itemView?.findViewById<ImageView>(R.id.pokemonListImageView)
+        private val pokemonListImage = itemView?.findViewById<ImageView>(R.id.pokemonListImageView)
         val pokemonListNameTxt = itemView?.findViewById<TextView>(R.id.pokemonListNameTxt)
 
-        fun bindPokemon(pokemon: PokemonListItemModel) {
+        fun bindPokemon(berry: PokemonListItemModel) {
 
-            pokemonListNameTxt?.text = Utils.formatString(pokemon.name)
+            pokemonListNameTxt?.text = Utils.formatString(berry.name)
 
-            val imageUrl = Utils.getPokemonImageUrl(pokemon.url)
+            val imageUrl = Utils.getBerryImageUrl(berry.name)
 
             if (pokemonListImage != null) {
                 if (context != null) {
@@ -51,7 +51,7 @@ class PokemonListAdapter(val context: Context?, private val pokemonList: ArrayLi
 
             itemView?.setOnClickListener {
                 if (pokemonListImage != null) {
-                    itemClick(pokemon, pokemonListImage)
+                    itemClick(berry, pokemonListImage)
                 }
             }
         }

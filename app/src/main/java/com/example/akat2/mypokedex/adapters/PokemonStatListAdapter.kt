@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.models.PokemonStat
+import com.example.akat2.mypokedex.utils.Utils
 
 /**
  * Created by Ayush Kataria on 08-07-2018.
@@ -35,7 +36,7 @@ class PokemonStatListAdapter(val context: Context?, val pokemonStats: ArrayList<
         val pokemonDetailStatEffortTxt = itemView?.findViewById<TextView>(R.id.pokemonDetailStatEffortTxt)
 
         fun bindStat(pokemonStat: PokemonStat) {
-            pokemonDetailStatNameTxt?.text = pokemonStat.name
+            pokemonDetailStatNameTxt?.text = Utils.formatString(pokemonStat.name)
             pokemonDetailStatBaseStatTxt?.text = pokemonStat.baseStat.toString()
             pokemonDetailStatEffortTxt?.text = pokemonStat.effort.toString()
         }

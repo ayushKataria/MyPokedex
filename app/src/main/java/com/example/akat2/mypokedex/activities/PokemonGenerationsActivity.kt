@@ -17,13 +17,14 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.akat2.mypokedex.App
 import com.example.akat2.mypokedex.R
-import com.example.akat2.mypokedex.fragments.PokemonGenerationMovesFragment
-import com.example.akat2.mypokedex.fragments.PokemonGenerationPokemonsFragment
-import com.example.akat2.mypokedex.fragments.PokemonGenerationTypesFragment
+import com.example.akat2.mypokedex.fragments.pokemonGenerationFragments.PokemonGenerationMovesFragment
+import com.example.akat2.mypokedex.fragments.pokemonGenerationFragments.PokemonGenerationPokemonsFragment
+import com.example.akat2.mypokedex.fragments.pokemonGenerationFragments.PokemonGenerationTypesFragment
 import com.example.akat2.mypokedex.models.Generation
 import com.example.akat2.mypokedex.models.PokemonListItemModel
 import com.example.akat2.mypokedex.utils.BASE_URL
 import com.example.akat2.mypokedex.utils.URL_GENERATION
+import com.example.akat2.mypokedex.utils.Utils
 import kotlinx.android.synthetic.main.activity_pokemon_generations.*
 import org.json.JSONException
 
@@ -39,7 +40,7 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_menu_black)
+            setHomeAsUpIndicator(R.drawable.ic_menu_white)
         }
 
         progressBar.indeterminateDrawable.setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY)
@@ -56,6 +57,18 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
                 }
                 R.id.navViewGeneration -> {
                     //Already here
+                }
+                R.id.navViewType -> {
+                    val typeIntent = Intent(this, PokemonTypeListActivity::class.java)
+                    typeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(typeIntent)
+                    finish()
+                }
+                R.id.navViewBerry -> {
+                    val berryIntent = Intent(this, PokemonBerryListActivity::class.java)
+                    berryIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(berryIntent)
+                    finish()
                 }
             }
             true
@@ -81,7 +94,6 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
         generationSpinner.adapter = spinnerAdapter
 
         generationSpinner.onItemSelectedListener = this
-        loadGenerationData(generationUrls[generationNames[0]])
     }
 
     private fun loadGenerationList() {
@@ -101,8 +113,8 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
                     val generationName = jsonObject.getString("name")
                     val generationUrl = jsonObject.getString("url")
 
-                    generationNames.add(generationName)
-                    generationUrls[generationName] = generationUrl
+                    generationNames.add(Utils.formatString(generationName))
+                    generationUrls[Utils.formatString(generationName)] = generationUrl
                 }
                 generationListReceived()
             }catch (e: JSONException){
@@ -129,13 +141,13 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
             var fragment: Fragment? = null
 
             when(item.itemId){
-                R.id.bottomNavPokemon -> {
+                R.id.genBottomNavPokemon -> {
                     fragment = PokemonGenerationPokemonsFragment()
                 }
-                R.id.bottomNavMoves -> {
+                R.id.genBottomNavMoves -> {
                     fragment = PokemonGenerationMovesFragment()
                 }
-                R.id.bottomNavTypes -> {
+                R.id.genBottomNavTypes -> {
                     fragment = PokemonGenerationTypesFragment()
                 }
             }
@@ -168,7 +180,7 @@ class PokemonGenerationsActivity : AppCompatActivity(), AdapterView.OnItemSelect
                 for (i in 0 until movesJsonArray.length()) {
                     val moveJsonObject = movesJsonArray.getJSONObject(i)
                     val name = moveJsonObject.getString("name")
-                    generationDetails.moves.add(name)
+                    generationDetails.moves.add(Utils.formatString(name))
                 }
 
                 val pokemonJsonArray = response.getJSONArray("pokemon_species")

@@ -13,12 +13,11 @@ import com.example.akat2.mypokedex.utils.Utils
 /**
  * Created by Ayush Kataria on 02-07-2018.
  */
-class PokemonTypeListAdapter(val context: Context?, private val types: ArrayList<String>, val typeUrl: HashMap<String, String>
-                             , val itemClick: (String) -> Unit): RecyclerView.Adapter<PokemonTypeListAdapter.ViewHolder>() {
+class PokemonTypeListAdapter(val context: Context?, private val types: ArrayList<String>, val typeUrl: HashMap<String, String>?): RecyclerView.Adapter<PokemonTypeListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_type_list_item, parent, false)
-        return ViewHolder(view, itemClick)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -29,17 +28,18 @@ class PokemonTypeListAdapter(val context: Context?, private val types: ArrayList
         holder.bindType(types[position])
     }
 
-    inner class ViewHolder(itemView: View?, val itemClick: (String) -> Unit) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
 
         val typeNameTextView = itemView?.findViewById<TextView>(R.id.pokemonListTypeTxt)
         val typeImageView = itemView?.findViewById<ImageView>(R.id.pokemonTypeImageView)
 
         fun bindType(typeName: String) {
-            typeNameTextView?.text = typeName
+            typeNameTextView?.text = Utils.formatString(typeName)
 
-            typeImageView?.setImageResource(Utils.getTypeImageResourceId(context, typeName)!!)
-
-            itemView.setOnClickListener { itemClick(typeUrl[typeName]!!) }
+            val imageResource = Utils.getTypeImageResourceId(context, typeName)
+            if (imageResource != null) {
+                typeImageView?.setImageResource(imageResource)
+            }
         }
     }
 

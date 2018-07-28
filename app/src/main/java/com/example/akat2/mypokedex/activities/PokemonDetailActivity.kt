@@ -20,7 +20,7 @@ import com.example.akat2.mypokedex.utils.*
 import kotlinx.android.synthetic.main.activity_pokemon_detail.*
 import org.json.JSONException
 
-class PokemonDetailActivity() : AppCompatActivity() {
+class PokemonDetailActivity : AppCompatActivity() {
 
     lateinit var pokemonUrl: String
 
@@ -34,7 +34,7 @@ class PokemonDetailActivity() : AppCompatActivity() {
         pokemonUrl = intent.getStringExtra(POKEMON_URL_TAG)
 
         Glide.with(this)
-                .load(Utils.getImageUrl(pokemonUrl))
+                .load(Utils.getPokemonImageUrl(pokemonUrl))
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
                         supportStartPostponedEnterTransition()
@@ -53,7 +53,7 @@ class PokemonDetailActivity() : AppCompatActivity() {
     }
 
     fun updateUi() {
-        pokemonDetailNameTxt.text = pokemonDetail.name
+        pokemonDetailNameTxt.text = Utils.formatString(pokemonDetail.name)
         pokemonDetailHeightTxt.text = "${((pokemonDetail.height.toDouble())/10).toString()}m"
         pokemonDetailWeightTxt.text = "${((pokemonDetail.weight.toDouble())/10).toString()}kg"
 
@@ -64,7 +64,7 @@ class PokemonDetailActivity() : AppCompatActivity() {
     }
 
 
-    fun pokemonDetailRequest() {
+    private fun pokemonDetailRequest() {
 
         val pokemonDetailRequest = object : JsonObjectRequest(Method.GET, pokemonUrl, null, Response.Listener { response ->
 

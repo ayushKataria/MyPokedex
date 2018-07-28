@@ -20,7 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PokemonDetailActivity" />
-        <activity android:name=".activities.PokemonGenerationsActivity"></activity>
+        <activity android:name=".activities.PokemonGenerationsActivity" />
+        <activity android:name=".activities.PokemonTypeListActivity" />
+        <activity android:name=".activities.PokemonTypeDetailActivity" />
+        <activity android:name=".activities.PokemonBerryListActivity"></activity>
     </application>
 
 </manifest>

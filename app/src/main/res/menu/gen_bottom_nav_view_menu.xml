@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/bottomNavPokemon"
+        android:id="@+id/genBottomNavPokemon"
         android:title="Pokemon"
-        android:icon="@drawable/ic_pikachu"/>
+        android:icon="@mipmap/ic_pikachu"/>
 
     <item
-        android:id="@+id/bottomNavTypes"
+        android:id="@+id/genBottomNavTypes"
         android:title="Types"
-        android:icon="@mipmap/normal"/>
+        android:icon="@mipmap/ic_type"/>
 
     <item
-        android:id="@+id/bottomNavMoves"
+        android:id="@+id/genBottomNavMoves"
         android:icon="@drawable/ic_quick_slash"
         android:title="Moves"/>
 

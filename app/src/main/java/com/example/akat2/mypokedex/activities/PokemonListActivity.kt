@@ -3,10 +3,10 @@ package com.example.akat2.mypokedex.activities
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.GravityCompat
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.MenuItem
@@ -22,7 +22,6 @@ import com.example.akat2.mypokedex.utils.BASE_URL
 import com.example.akat2.mypokedex.utils.POKEMON_URL_TAG
 import com.example.akat2.mypokedex.utils.URL_POKEMON
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
-import kotlinx.android.synthetic.main.pokemon_list_item.*
 import org.json.JSONException
 
 class PokemonListActivity : AppCompatActivity() {
@@ -30,7 +29,7 @@ class PokemonListActivity : AppCompatActivity() {
     val pokemonList = ArrayList<PokemonListItemModel>()
     var previousUrl = "null"
     var nextUrl = "null"
-    lateinit var pokemonListAdapter: PokemonListAdapter
+    private lateinit var pokemonListAdapter: PokemonListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +37,7 @@ class PokemonListActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_menu_black)
+            setHomeAsUpIndicator(R.drawable.ic_menu_white)
         }
 
         progressBar.indeterminateDrawable.setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY)
@@ -53,6 +52,14 @@ class PokemonListActivity : AppCompatActivity() {
                 R.id.navViewGeneration -> {
                     val genIntent = Intent(this, PokemonGenerationsActivity::class.java)
                     startActivity(genIntent)
+                }
+                R.id.navViewType -> {
+                    val typeIntent = Intent(this, PokemonTypeListActivity::class.java)
+                    startActivity(typeIntent)
+                }
+                R.id.navViewBerry -> {
+                    val berryIntent = Intent(this, PokemonBerryListActivity::class.java)
+                    startActivity(berryIntent)
                 }
             }
             true
@@ -105,7 +112,7 @@ class PokemonListActivity : AppCompatActivity() {
         }
     }
 
-    fun pokemonListRequest(url: String){
+    private fun pokemonListRequest(url: String){
 
         progressBar.visibility = View.VISIBLE
 

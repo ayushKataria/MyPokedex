@@ -1,4 +1,4 @@
-package com.example.akat2.mypokedex.fragments
+package com.example.akat2.mypokedex.fragments.pokemonGenerationFragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -27,9 +27,7 @@ class PokemonGenerationTypesFragment: Fragment() {
 
         if(generationDetails.types.size > 0) {
             generationNoTypesTxt.visibility = View.GONE
-            generationTypesList.adapter = PokemonTypeListAdapter(context, generationDetails.types, generationDetails.typeUrls) { typeUrl ->
-                //TODO: Implement item click
-            }
+            generationTypesList.adapter = PokemonTypeListAdapter(context, generationDetails.types, generationDetails.typeUrls)
             generationTypesList.layoutManager = LinearLayoutManager(context)
         }else {
             generationNoTypesTxt.visibility = View.VISIBLE

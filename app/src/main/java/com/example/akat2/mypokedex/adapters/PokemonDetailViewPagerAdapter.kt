@@ -3,7 +3,7 @@ package com.example.akat2.mypokedex.adapters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.example.akat2.mypokedex.fragments.*
+import com.example.akat2.mypokedex.fragments.pokemonDetailFragments.*
 
 /**
  * Created by Ayush Kataria on 02-07-2018.

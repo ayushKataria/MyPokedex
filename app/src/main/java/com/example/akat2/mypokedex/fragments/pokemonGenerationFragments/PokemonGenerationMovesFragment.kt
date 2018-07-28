@@ -1,4 +1,4 @@
-package com.example.akat2.mypokedex.fragments
+package com.example.akat2.mypokedex.fragments.pokemonGenerationFragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

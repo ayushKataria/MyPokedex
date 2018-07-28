@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.akat2.mypokedex.R
+import com.example.akat2.mypokedex.utils.Utils
 
 /**
  * Created by Ayush Kataria on 08-07-2018.
@@ -34,7 +35,7 @@ class PokemonGamesListAdapter(val context: Context?, val gameList: ArrayList<Str
 
         fun bindGame(gameName: String) {
 
-            pokemonGameNameTxt?.text = gameName
+            pokemonGameNameTxt?.text = Utils.formatString(gameName)
 
             itemView?.setOnClickListener { itemClick(gameName) }
         }

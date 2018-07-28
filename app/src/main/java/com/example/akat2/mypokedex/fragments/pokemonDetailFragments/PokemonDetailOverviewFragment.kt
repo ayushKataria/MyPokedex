@@ -1,4 +1,4 @@
-package com.example.akat2.mypokedex.fragments
+package com.example.akat2.mypokedex.fragments.pokemonDetailFragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.activities.PokemonDetailActivity
 import com.example.akat2.mypokedex.adapters.PokemonTypeListAdapter
+import com.example.akat2.mypokedex.utils.Utils
 import kotlinx.android.synthetic.main.fragment_pokemon_detail_overview.*
 
 /**
@@ -26,14 +27,12 @@ class PokemonDetailOverviewFragment: Fragment() {
 
         val pokemon = (activity as PokemonDetailActivity).pokemonDetail
 
-        pokemonOverviewNameTxt.text = pokemon.name
+        pokemonOverviewNameTxt.text = Utils.formatString(pokemon.name)
         pokemonOverviewWeightTxt.text = "${((pokemon.weight.toDouble())/10).toString()}kg"
         pokemonOverviewHeightTxt.text = "${((pokemon.height.toDouble())/10).toString()}m"
         pokemonOverviewExpTxt.text = pokemon.baseExperience.toString()
 
-        pokemonOverviewTypesList.adapter = PokemonTypeListAdapter(context, pokemon.types, pokemon.typeUrls){
-            //TODO: Handle click
-        }
+        pokemonOverviewTypesList.adapter = PokemonTypeListAdapter(context, pokemon.types, pokemon.typeUrls)
         pokemonOverviewTypesList.layoutManager = LinearLayoutManager(context)
     }
 }

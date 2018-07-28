@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.akat2.mypokedex.R
 import com.example.akat2.mypokedex.models.Ability
+import com.example.akat2.mypokedex.utils.Utils
 
 /**
  * Created by Ayush Kataria on 03-07-2018.
@@ -36,7 +37,7 @@ class PokemonAbilityListAdapter(val context: Context?, private val abilityList: 
 
         fun bindAbility(ability: Ability) {
 
-            abilityNameTxt?.text = ability.name
+            abilityNameTxt?.text = Utils.formatString(ability.name)
             abilitySlotTxt?.text = ability.slot.toString()
 
             if(ability.isHidden){
